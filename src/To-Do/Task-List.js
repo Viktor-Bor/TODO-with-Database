@@ -23,6 +23,15 @@ export function TaskList({ allTask, setAllTask }) {
         setAllTask(updateTaskList)
 }
 
+    function fetchListFromDatabase(){
+        return fetch('https://database-to-todo-default-rtdb.europe-west1.firebasedatabase.app/todos.json', {
+            method: 'GET'
+        })
+        .then(response => response.json())
+        
+    }
+
+    fetchListFromDatabase()
 
     return (
         <div className="task-list">

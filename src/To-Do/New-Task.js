@@ -12,7 +12,21 @@ export function NewTask({setNewTask, newTask, setAllTask}) {
 
     function addToDo(){
         setAllTask((prev) => [ ...prev, newTask ])
+        addTodoToDatabase()
         setNewTask({value: ''})
+    }
+
+    //database ...
+
+    function addTodoToDatabase(){
+        return fetch('https://database-to-todo-default-rtdb.europe-west1.firebasedatabase.app/todos.json', {
+            method: 'POST',
+            body: JSON.stringify(newTask),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json()) //here key is fetched
     }
 
 
