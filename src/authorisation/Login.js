@@ -1,7 +1,29 @@
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../firebase-config'
 import React from 'react';
+import { useState } from 'react';
 
 export function Login({setActiveRegistration, activeLogIn, setActiveLogIn}){
 
+  const [loginEmail, setLoginEmail] = useState('')
+  const [loginPassword, setLoginPassword] = useState('')
+
+
+const login = async (e) => {
+    e.preventDefault()
+        try {
+            const user = await signInWithEmailAndPassword(auth, loginEmail, loginPassword)
+            if(user) {
+              setActiveLogIn(false)
+              setActiveRegistration(false) 
+              // console.log(user)
+            }
+        }
+        catch (error) {
+            console.log(error)
+        }
+}
+  
     function openLoginForm(){
         setActiveLogIn(false)
         setActiveRegistration(true)   
@@ -9,19 +31,16 @@ export function Login({setActiveRegistration, activeLogIn, setActiveLogIn}){
 
 return (
         <div className={activeLogIn ? "login-form active" : "login-form"} onClick={e => e.stopPropagation()}>
-
       <h1>Log in</h1>
         <form>
-
             <div className="form-control">
-            <input type="email" placeholder="Email" required />
+            <input type="email" placeholder="Email" required onChange={(e) => setLoginEmail(e.target.value)}/>
             </div>
             <div className="form-control">
-            <input type="password" placeholder="Password" required />
+            <input type="password" placeholder="Password" required onChange={(e) => setLoginPassword(e.target.value)}/>
             </div>
-            <button className="btn">Log IN</button>
+            <button className="btn" onClick={login}>Log IN</button>
             <p className="text">Haven't an account <span onClick={() => openLoginForm()}>Registration</span></p>
-
         </form>
      </div>
     )

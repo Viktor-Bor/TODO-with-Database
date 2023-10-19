@@ -7,28 +7,33 @@ export function NewTask({setNewTask, newTask, setAllTask}) {
     // const name = target.name
     const { value, name } = target
     // (prev) - ???
-    setNewTask({id: new Date().toLocaleString(), [name]: value, isDone: false, key: Math.random()})
+    setNewTask({id: new Date().toLocaleString(), [name]: value, isDone: false, key: Math.random()*1000})
  }
 
     function addToDo(){
         setAllTask((prev) => [ ...prev, newTask ])
-        addTodoToDatabase()
+        addTaskToDataBase()
         setNewTask({value: ''})
     }
 
     //database ...
 
-    function addTodoToDatabase(){
-        return fetch('https://database-to-todo-default-rtdb.europe-west1.firebasedatabase.app/todos.json', {
-            method: 'POST',
-            body: JSON.stringify(newTask),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        .then(response => response.json()) //here key is fetched
-    }
+    function addTaskToDataBase() {
+        return fetch('https://to-do-withdatabase-default-rtdb.firebaseio.com/todos.json' , {
+        method: 'POST',
+        body: JSON.stringify(newTask),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }).then(response => response.json())
+    .then(response => {
+        newTask.idFromDatabase = response.name
+        // console.log('from new task: ', newTask)
+        // console.log('from new task all task : ', allTask)
+    })
+} 
 
+    
 
     return (
         <div className="new-task">

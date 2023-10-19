@@ -1,29 +1,35 @@
 import React from 'react'
 import ReactDOM from 'react-dom';
 
-export function Form({ Login, Registration, activeRegistration, setActiveRegistration, activeLogIn, setActiveLogIn }){
 
-    function closeForm(){
-        setActiveRegistration(false)
-        setActiveLogIn(false)
-      }
+export function Form({ Login, Registration, RegistrationSucceed, activeRegistratoinSucceed, setActiveRegistratoinSucceed,activeRegistration, setActiveRegistration, activeLogIn, setActiveLogIn }){
+
 
 return ReactDOM.createPortal(
 
-    <div className={activeRegistration || activeLogIn? "layout-form active" : "layout-form"} onClick={() => closeForm()}>
+    <div className={activeRegistration || activeLogIn || activeRegistratoinSucceed ? "layout-form active" : "layout-form"}>
 
     <Registration 
     activeRegistration={activeRegistration} 
     setActiveRegistration={setActiveRegistration}
     activeLogIn={activeLogIn}
     setActiveLogIn={setActiveLogIn}
-    closeForm={closeForm} />
+    setActiveRegistratoinSucceed={setActiveRegistratoinSucceed}
+    />
+
+    <RegistrationSucceed 
+    activeRegistratoinSucceed={activeRegistratoinSucceed}
+    setActiveRegistration={setActiveRegistration}
+    setActiveLogIn={setActiveLogIn}
+    setActiveRegistratoinSucceed={setActiveRegistratoinSucceed}
+    />
+
     <Login 
     activeRegistration={activeRegistration} 
     setActiveRegistration={setActiveRegistration}
     activeLogIn={activeLogIn}
     setActiveLogIn={setActiveLogIn}
-    closeForm={closeForm}/>
+    />
 </div>,
     document.getElementById('portal')
     )

@@ -79,6 +79,25 @@ body {
   color: rgb(173, 216, 230);
 }
 
+.registration-succeed-form {
+  letter-spacing: 2px;
+  width: 400px;
+  height: 350px;
+  background-color: rgb(30, 50, 70);
+  padding: 20px 40px;
+  border-radius: 40px;
+  visibility: hidden;
+  transition: transform 0.4s;
+  transform: translateY(1000px);
+}
+
+.registration-succeed-form.active{
+  visibility: initial;
+  position: absolute;
+  transform: translateY(60px);
+}
+
+
 /* ------- */
 
 /* Login form */
@@ -130,6 +149,11 @@ body {
 
 .btn:focus {
   outline: 0;
+}
+
+.btn.logout {
+  margin-top: 10px;
+  width: 40%;
 }
 
 .text {
