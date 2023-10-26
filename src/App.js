@@ -24,9 +24,11 @@ const [errorMessageActive, setErrorMessageActive] = useState(false)
 const [errorMessage, setErrorMessage] = useState('')
 
 
+
 const logout = async () => {
   await signOut(auth)
   setActiveLogIn(true)
+  window.document.body.style.overflow = 'hidden'
 }
 
 
@@ -47,6 +49,7 @@ activeLogIn={activeLogIn}
 setActiveLogIn={setActiveLogIn}
 activeRegistratoinSucceed={activeRegistratoinSucceed}
 setActiveRegistratoinSucceed={setActiveRegistratoinSucceed}
+
 />
 
  <NewTask 
@@ -60,6 +63,8 @@ setActiveRegistratoinSucceed={setActiveRegistratoinSucceed}
  allTask={allTask}
  setAllTask={setAllTask}
  newTask={newTask}
+
+ 
  />
  
 <button className='btn logout' onClick={() => logout()}>Log OUT</button>

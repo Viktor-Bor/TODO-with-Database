@@ -15,9 +15,10 @@ const login = async (e) => {
             const user = await signInWithEmailAndPassword(auth, loginEmail, loginPassword)
             if(user) {
               setActiveLogIn(false)
-              setActiveRegistration(false) 
+              setActiveRegistration(false)
+              window.document.body.style.overflow = 'auto'
             }
-        } // discribe an error !
+        }
         catch (error) {
           setErrorMessageActive(true)
           setErrorMessage('Ops, login or password is bad or user doesn\'t exist ')

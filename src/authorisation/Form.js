@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 
 
-export function Form({ Login, Registration, RegistrationSucceed, activeRegistratoinSucceed, setActiveRegistratoinSucceed,activeRegistration, setActiveRegistration, activeLogIn, setActiveLogIn, ErrorMessage, errorMessageActive, setErrorMessageActive, errorMessage, setErrorMessage }){
+export function Form({ Login, Registration, RegistrationSucceed, activeRegistratoinSucceed, setActiveRegistratoinSucceed,activeRegistration, setActiveRegistration, activeLogIn, setActiveLogIn, ErrorMessage, errorMessageActive, setErrorMessageActive, errorMessage, setErrorMessage}){
 
 
 return ReactDOM.createPortal(
