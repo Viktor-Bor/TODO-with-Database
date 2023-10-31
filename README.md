@@ -2,7 +2,7 @@
 
 * Application with backend based on firebase
 
-* To launch lokaly run: npm start
+* To launch locally run: npm start
 * !!! Running from ./buld directory not from ./public !!!
 
 * !!! For ERR_OSSL_EVP_UNSUPPORTED webpack issue run command: export NODE_OPTIONS=--openssl-legacy-provider !!!
